@@ -7,7 +7,7 @@ export default function Game( init) {
     cells = clear();
   };
   const setCell = (row, col, alive) => {
-    cells[row][col] = alive;
+    cells[row][col] = alive?1:0;
   };
   const getBoard = () => {
     return cells;
@@ -27,11 +27,6 @@ export default function Game( init) {
   const that = {};
   const { cols, rows} = init;
   let cells = clear();
-  if( init.cells){
-    init.cells.forEach( (cell) => {
-      setCell( cell[0], cell[1], 1);
-    });
-  }
 
   // public exports
   that.clear = clearBoard;
