@@ -8,8 +8,8 @@ class App extends Component {
   state = {
     map_cells : []
   };
-  row_count = 12;
-  col_count = 12;
+  row_count = 30;
+  col_count = 40;
   last_button = false;
   last_row = -1;
   last_col = -1;
@@ -45,6 +45,7 @@ class App extends Component {
   handleSave = () => {
     console.log( "handleSave");
     // save
+    console.log( JSON.stringify( this.game.getBoard()));
   };
   render() {
     return (
