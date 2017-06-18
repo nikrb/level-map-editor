@@ -22,6 +22,13 @@ export default function Game( init) {
       }
     });
   };
+  const setBoard = ( cell_map) => {
+    cell_map.forEach( (row, ndx) => {
+      row.forEach( (cell, col) => {
+        setCell( ndx, col, cell);
+      });
+    });
+  };
 
   // private init
   const that = {};
@@ -31,6 +38,7 @@ export default function Game( init) {
   // public exports
   that.clear = clearBoard;
   that.getBoard = getBoard;
+  that.setBoard = setBoard;
   that.setCell = setCell;
   that.setBorder = setBorder;
   return that;

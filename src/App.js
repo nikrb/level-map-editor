@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Game from './components/Game/Game';
 import {Board} from './components/Board';
 import Hud from './components/Hud';
+import {loadLevel} from './Actions';
 import './App.css';
 
 class App extends Component {
@@ -15,8 +16,12 @@ class App extends Component {
   last_col = -1;
   game = Game( {rows:this.row_count, cols:this.col_count});
   componentDidMount = () => {
-    this.game.setBorder();
-    this.setState( {map_cells: this.game.getBoard()});
+    loadLevel()
+    .then( (response) => {
+      this.game.setBoard( response);
+      this.game.setBorder();
+      this.setState( {map_cells: this.game.getBoard()});
+    });
   };
   handleClick = (row,col,wall,buttons) => {
     console.log( `handleCellClick (${row},${col})`);
